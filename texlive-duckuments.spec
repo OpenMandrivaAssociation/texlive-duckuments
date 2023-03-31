@@ -1,6 +1,6 @@
 Name:		texlive-duckuments
 Version:	52271
-Release:	1
+Release:	2
 Summary:	Create duckified dummy content
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/duckuments
