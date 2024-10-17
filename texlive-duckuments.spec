@@ -3,7 +3,7 @@ Version:	52271
 Release:	2
 Summary:	Create duckified dummy content
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/duckuments
+URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/duckuments
 License:	lppl1.3c
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/duckuments.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/duckuments.doc.r%{version}.tar.xz
