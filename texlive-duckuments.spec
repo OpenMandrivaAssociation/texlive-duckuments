@@ -1,48 +1,32 @@
-Name:		texlive-duckuments
-Version:	52271
-Release:	2
+%global tl_name duckuments
+%global tl_revision 77682
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	0.5
+Release:	%{tl_revision}.1
 Summary:	Create duckified dummy content
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/duckuments
 License:	lppl1.3c
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/duckuments.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/duckuments.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/duckuments.source.r%{version}.tar.xz
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/duckuments.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/duckuments.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/duckuments.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
+BuildSystem:	texlive
 BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+%texlive_base_requires
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-The package provides facilities to create duckified dummy
-contents. It was inspired by the question "Getting ducks in
-example images" on TeX-LaTeX Stack Exchange. The following
-macros are available: \duckument[key=val] - print a short
-duckument \blindduck[key=val] - print a paragraph
-\ducklist(*){environment} - create a list of type environment
-\ducklistlist(*){environment} - create nested lists
-\duckitemize - ducklist{itemize} \duckenumerate -
-ducklist{enumerate} \duckdescription - ducklist{description}
-\duckumentsCreateExampleFile \duckumentsDrawRandomDucks The
-package works with pdfTeX, LuaTeX, and XeTeX.
+The package provides facilities to create duckified dummy contents. It
+was inspired by the question "Getting ducks in example images" on TeX-
+LaTeX Stack Exchange. The following macros are available:
+\duckument[key=val] - print a short duckument \blindduck[key=val] -
+print a paragraph \ducklist(*){environment} - create a list of type
+environment \ducklistlist(*){environment} - create nested lists
+\duckitemize - ducklist{itemize} \duckenumerate - ducklist{enumerate}
+\duckdescription - ducklist{description} \duckumentsCreateExampleFile
+\duckumentsDrawRandomDucks The package works with pdfTeX, LuaTeX, and
+XeTeX.
 
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-rm -rf tlpkg
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -a * %{buildroot}%{_texmfdistdir}
-
-%files
-%doc %{_texmfdistdir}/source/latex/duckuments
-%{_texmfdistdir}/tex/latex/duckuments
-%doc %{_texmfdistdir}/doc/latex/duckuments
-
-%post -p %{_sbindir}/texlive.post
-
-%postun
-[ "$1" -eq 0 ] && %{_sbindir}/texlive.post
